@@ -4,7 +4,7 @@ defmodule Loltrainer.MatchController do
   def index(conn, _params) do
     # Call RIOT api and get matches
     base_url = 'https://euw.api.pvp.net/api/lol/euw'
-    riot_api_key = ""
+    riot_api_key = System.get_env("RIOT_API_KEY")
 
     # 1. Get summoner id
     summoner_name = "microyoshi"

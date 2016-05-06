@@ -1,0 +1,24 @@
+app:
+  image: ultrayoshi/phoenix
+  command: phoenix.server
+  working_dir: /code
+  volumes:
+    - .:/code
+    - .hex:/root/.hex
+  ports:
+    - 4000:4000
+  environment:
+    - POSTGRES_HOST=db
+    - POSTGRES_USER=loltrainer
+    - POSTGRES_PASSWORD=loltrainer
+  links:
+    - db
+
+db:
+  image: postgres
+  environment:
+    - POSTGRES_DB=loltrainer_dev
+    - POSTGRES_USER=loltrainer
+    - POSTGRES_PASSWORD=loltrainer
+  volumes:
+    - .postgres_data:/var/lib/postgresql/data
